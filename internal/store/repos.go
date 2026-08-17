@@ -36,7 +36,7 @@ func (r *CabinRepo) Get(id string) (cabin.Cabin, error) {
 func (r *CabinRepo) All() ([]cabin.Cabin, error) {
 	r.S.mu.RLock()
 	defer r.S.mu.RUnlock()
-	out := make([]cabin.Cabin, 0, len(r.S.data.Cabins))
+	out := make([]cabin.Cabin, len(r.S.data.Cabins))
 	copy(out, r.S.data.Cabins)
 	return out, nil
 }
